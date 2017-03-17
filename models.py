@@ -10,12 +10,12 @@ class Spider(models.Model):
         (0, "debug"),
         (1, "release"),
     )
-    domain = models.CharField(max_length=63)
+    domain = models.CharField(max_length=63, unique=True)
     stype = models.CharField(max_length=63, default='single', verbose_name=u'type')
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     entry = models.CharField(max_length=1023)
     pages = models.IntegerField(blank=True, null=True)
-    url_xpath = models.CharField(max_length=4095, unique=True)
+    url_xpath = models.CharField(max_length=4095)
     title_xpath = models.CharField(max_length=4095)
     content_xpath = models.CharField(max_length=4095)
     author_xpath = models.CharField(max_length=4095, blank=True, null=True)
