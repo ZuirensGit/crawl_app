@@ -81,6 +81,7 @@
 
 {% block content %}
     <div class="card">
+            <p id="crawl-result"/>
         {% if cl.formset.errors %}
             <p class="card-header card-inverse card-danger">
                 {% if cl.formset.total_error_count == 1 %}{% trans "Please correct the error below." %}
@@ -159,6 +160,7 @@
                 
                 btnSpider.on('click', function(evt){
                     var target = $(evt.target),
+                        result_body = $('p#crawl-result'),
                     domain = target.closest('tr').children('th.field-domain').text();
                     evt.preventDefault();
                     $.ajax({
@@ -170,6 +172,7 @@
                             if (data['ret'] === 0) {
                                 target.attr('class', data['api_status']);
                                 target.text(data['api_status']);
+                                result_body.val(data['result']);
                             }
                         }
 

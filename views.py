@@ -31,7 +31,7 @@ class SpiderDebugView(View):
                     status = self._fire(spider)
                     spider.status = status
                     spider.save()
-                    return JSONResponse({'ret': 0, 'api_status': status})
+                    return JSONResponse({'ret': 0, 'api_status': status, 'result': '{"status": "ok"}'})
                 else:
                     return JSONResponse({'ret': 1})
             except Exception as e:
