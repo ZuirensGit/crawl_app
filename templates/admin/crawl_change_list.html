@@ -125,7 +125,7 @@
     <script type="text/javascript">
         (function($) {
             $(function() {
-                var btnPay = $('button#crawl');
+                var btnSpider = $('button#crawl');
 
                 function getCookie(cname) {
                     var name = cname + "=";
@@ -157,15 +157,15 @@
                 });
 
                 
-                btnPay.on('click', function(evt){
+                btnSpider.on('click', function(evt){
                     var target = $(evt.target),
-                    merchant_id = target.closest('tr').children('th.field-merchant_id').text();
+                    domain = target.closest('tr').children('th.field-domain').text();
                     evt.preventDefault();
                     $.ajax({
-                        url: '/payment/a/',
+                        url: '/crawl/a/',
                         method: 'post',
                         dataType: 'json',
-                        data: {'merchant_id': merchant_id},
+                        data: {'domain': domain},
                         success: function (data) {
                             if (data['ret'] === 0) {
                                 target.attr('class', data['api_status']);
