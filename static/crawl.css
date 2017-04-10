@@ -1,0 +1,31 @@
+
+
+button#crawl {
+	border: none;
+	font-weight: bold;
+	color: white;
+}
+
+button#crawl.success {
+	background: #4dbd74;
+}
+
+button#crawl.success:hover {
+	background: #00db4c;
+}
+
+button#crawl.debug {
+	background: #e6bc00;
+}
+
+button#crawl.debug:hover {
+	background: #f8cb00;
+}
+
+button#crawl.error {
+	background: #ff0200;
+}
+button#crawl.error:hover {
+	background: #f86c6b;
+}
+

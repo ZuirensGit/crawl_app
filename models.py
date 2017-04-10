@@ -6,13 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Spider(models.Model):
-    STATUS_CHOICES = (
-        (0, "debug"),
-        (1, "release"),
-    )
     domain = models.CharField(max_length=63, unique=True)
     stype = models.CharField(max_length=63, default='single', verbose_name=u'type')
-    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
+    status = models.CharField(max_length=63, default='debug')
     entry = models.CharField(max_length=1023)
     pages = models.IntegerField(blank=True, null=True)
     url_xpath = models.CharField(max_length=4095)
@@ -22,6 +18,7 @@ class Spider(models.Model):
     date_xpath = models.CharField(max_length=4095, blank=True, null=True)
     author_pattern = models.CharField(max_length=63, blank=True, null=True)
     date_pattern = models.CharField(max_length=63, blank=True, null=True)
+    release = models.BooleanField(default=False)
 
     def __str__(self):
         return '{}'.format(self.domain)
